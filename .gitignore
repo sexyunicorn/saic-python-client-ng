@@ -192,3 +192,4 @@ junit/
 
 # CodeBuddy
 .codebuddy/
+examples/config.py
