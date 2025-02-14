@@ -45,7 +45,9 @@ class VinInfo:
     series: str = None
     vin: str = None
     subAccountList: List[SubAccount] = field(default_factory=list)
-    vehicleModelConfiguration: List[VehicleModelConfiguration] = field(default_factory=list)
+    vehicleModelConfiguration: List[VehicleModelConfiguration] = field(
+        default_factory=list
+    )
 
 
 @dataclass
@@ -118,8 +120,8 @@ class VehicleStatusResp:
     @property
     def is_parked(self) -> bool:
         return (
-                self.basicVehicleStatus.engineStatus != 1
-                or self.basicVehicleStatus.handBrake
+            self.basicVehicleStatus.engineStatus != 1
+            or self.basicVehicleStatus.handBrake
         )
 
     @property
@@ -157,7 +159,7 @@ class RvcParams:
 
     def __init__(self, param_id: RvcParamsId, param_value: bytes):
         self.paramId = param_id.value
-        self.paramValue = base64.b64encode(param_value).decode('utf-8')
+        self.paramValue = base64.b64encode(param_value).decode("utf-8")
 
 
 class RvcReqType(Enum):
@@ -189,7 +191,7 @@ class VehicleControlReq:
 
     @property
     def rvc_req_type_decoded(self) -> Optional[bytes]:
-        return decode_bytes(input_value=self.rvcReqType, field_name='rvcReqType')
+        return decode_bytes(input_value=self.rvcReqType, field_name="rvcReqType")
 
 
 @dataclass
@@ -202,8 +204,8 @@ class VehicleControlResp:
 
     @property
     def rvc_req_sts_decoded(self) -> Optional[bytes]:
-        return decode_bytes(input_value=self.rvcReqSts, field_name='rvcReqSts')
+        return decode_bytes(input_value=self.rvcReqSts, field_name="rvcReqSts")
 
     @property
     def rvc_req_type_decoded(self) -> Optional[bytes]:
-        return decode_bytes(input_value=self.rvcReqType, field_name='rvcReqType')
+        return decode_bytes(input_value=self.rvcReqType, field_name="rvcReqType")

@@ -1,5 +1,10 @@
 from saic_ismart_client_ng import SaicVehicleApi
-from saic_ismart_client_ng.api.vehicle.alarm.schema import AlarmSwitchReq, AlarmSwitchResp, AlarmType, AlarmSwitch
+from saic_ismart_client_ng.api.vehicle.alarm.schema import (
+    AlarmSwitchReq,
+    AlarmSwitchResp,
+    AlarmType,
+    AlarmSwitch,
+)
 from saic_ismart_client_ng.crypto_utils import sha256_hex_digest
 
 
@@ -9,9 +14,7 @@ class SaicVehicleAlarmApi(SaicVehicleApi):
             "GET",
             "/vehicle/alarmSwitch",
             out_type=AlarmSwitchResp,
-            params={
-                "vin": sha256_hex_digest(vin)
-            }
+            params={"vin": sha256_hex_digest(vin)},
         )
 
     async def set_alarm_switches(self, alarm_switches: [AlarmType], vin: str) -> None:
@@ -20,7 +23,6 @@ class SaicVehicleAlarmApi(SaicVehicleApi):
             for alarm_type in alarm_switches
         ]
         body = AlarmSwitchReq(
-            alarmSwitchList=actual_switches,
-            vin=sha256_hex_digest(vin)
+            alarmSwitchList=actual_switches, vin=sha256_hex_digest(vin)
         )
         return await self.execute_api_call("PUT", "/vehicle/alarmSwitch", body=body)

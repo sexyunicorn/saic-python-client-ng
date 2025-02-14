@@ -6,7 +6,5 @@ class SaicUserApi(AbstractSaicApi):
 
     async def get_user_timezone(self) -> UserTimezoneResp:
         return await self.execute_api_call(
-            "GET",
-            "/user/timezone",
-            out_type=UserTimezoneResp
+            "GET", "/user/timezone", out_type=UserTimezoneResp
         )
