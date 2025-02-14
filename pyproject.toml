@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "saic_ismart_client_ng"
 homepage = "https://github.com/SAIC-iSmart-API/saic-python-client-ng"
-version = "0.6.0"
+version = "0.7.1"
 description = "SAIC next gen client library (MG iSMART)"
 authors = [
     "Giovanni Condello <saic-python-client@nanomad.net>",
@@ -21,7 +21,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.11"
 pycryptodome = "^3.20.0"
-httpx = "^0.27.0"
+httpx = ">=0.27.0,<0.29.0"
 tenacity = "^9.0.0"
 dacite = "^1.8.1"
 
